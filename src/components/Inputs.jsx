@@ -4,7 +4,8 @@ import { BiSearch, BiCurrentLocation } from "react-icons/bi";
 const Inputs = ({ setQuery, setUnits }) => {
   const [city, setCity] = useState("");
 
-  const handleSearchClick = () => {
+  const handleSearchClick = (e) => {
+    e.preventDefault();
     if (city !== "") setQuery({ q: city });
   };
 
@@ -18,29 +19,36 @@ const Inputs = ({ setQuery, setUnits }) => {
   };
 
   return (
-    <div className="flex flex-row justify-center my-6">
-      <div className="flex flex-row w-3/4 items-center justify-center space-x-4">
-        <input
-          value={city}
-          onChange={(e) => setCity(e.currentTarget.value)}
-          type="text"
-          placeholder="City..."
-          className="text-gray-600 text-xl font-light p-2 w-full shadow-xl capitalize focus:outline-none"
-        />
+    <div className="flex flex-row justify-center my-5">
+      <div className="flex flex-row w-4/5 items-center justify-center space-x-4">
+        <form
+          className="flex flex-row items-center w-full space-x-4"
+          onSubmit={handleSearchClick}
+        >
+          <input
+            value={city}
+            onChange={(e) => setCity(e.currentTarget.value)}
+            type="text"
+            placeholder="Search..."
+            className="text-gray-600 text-lg font-light p-2 w-full shadow-xl capitalize focus:outline-none"
+          />
 
-        <BiSearch
-          size={30}
-          className="cursor-pointer transition ease-out hover:scale-125"
-          onClick={handleSearchClick}
-        />
-
-        <BiCurrentLocation
-          size={30}
-          className="cursor-pointer transition ease-out hover:scale-125"
-          onClick={handleLocationClick}
-        />
+          <BiSearch
+            type="submit"
+            size={30}
+            className="cursor-pointer transition ease-out hover:scale-125"
+            onClick={handleSearchClick}
+          />
+        </form>
+        
+          <BiCurrentLocation
+            size={30}
+            className="cursor-pointer transition ease-out hover:scale-125"
+            onClick={handleLocationClick}
+          />
+     
       </div>
-      <div className="flex flex-row w-1/4 items-center justify-center">
+      <div className="flex flex-row w-1/5 items-center justify-end">
         <button
           className="text-2xl font-medium transition ease-out hover:scale-125"
           onClick={() => setUnits("metric")}
