@@ -68,14 +68,14 @@ const TempAndDetails = ({
   ];
   return (
     <div>
-      <div className="flex items-center justify-center py-3 text-xl text-cyan-300">
+      <div className="flex items-center justify-center py-2 sm:py-3 text-lg sm:text-xl text-cyan-300">
         <p>{details}</p>
       </div>
 
       <div className="flex flex-row items-center justify-between py-3">
-        <img src={icon} alt="weather icon" className="w-20 " />
+        <img src={icon} alt="weather icon" className="w-20" />
         <p className="text-5xl">{`${temp.toFixed()}˚`}</p>
-        <div className="flex flex-col space-y-3 items-start">
+        <div className="flex flex-col space-y-2 sm:space-y-3 items-start">
           {verticalDetails.map(({ id, Icon, title, value }) => (
             <div
               key={id}
@@ -89,7 +89,7 @@ const TempAndDetails = ({
         </div>
       </div>
 
-      <div className="flex flex-row items-center justify-center space-x-10 text-sm py-1">
+      <div className="flex flex-row items-center justify-center space-x-4 sm:space-x-10 text-sm py-1">
         {horizontalDetails.map(({ id, Icon, title, value }) => (
           <div key={id} className="flex flex-row items-center">
             <Icon />
